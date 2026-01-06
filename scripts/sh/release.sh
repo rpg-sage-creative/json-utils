@@ -94,6 +94,9 @@ case $(echo $REPLY | tr '[A-Z]' '[a-z]') in
 	*) exit 1 ;;
 esac
 
+# step 1 - create release branch
+git checkout -b "release/$TARGET_VERSION"
+
 # step 2 - update package version
 node "$INDEX_MJS" version "$TYPE"
 if [ "$?" != "0" ]; then echo "Release Failed!"; exit 1; fi
@@ -106,17 +109,20 @@ if [ "$?" != "0" ]; then echo "Release Failed!"; exit 1; fi
 git add build.json package.json
 if [ "$?" != "0" ]; then echo "Release Failed!"; exit 1; fi
 
-git commit -m "build(versioning): Release - $TARGET_VERSION"
+git commit -am "build(versioning): Release - $TARGET_VERSION"
 if [ "$?" != "0" ]; then echo "Release Failed!"; exit 1; fi
 
-git push
+git push origin "release/$TARGET_VERSION"
 if [ "$?" != "0" ]; then echo "Release Failed!"; exit 1; fi
 
 # step 5 - create release tag
 PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')
-git tag "v$PACKAGE_VERSION"
+git tag -a "v$PACKAGE_VERSION" -m "Release $PACKAGE_VERSION"
 if [ "$?" != "0" ]; then echo "Release Failed!"; exit 1; fi
 
-git push --tags
+git push origin --tags
+
+git checkout main && git merge "release/$TARGET_VERSION"
+git checkout develop && git merge "release/$TARGET_VERSION"
 
 echo "Release $TARGET_VERSION ($TYPE) Done."
