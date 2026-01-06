@@ -1,0 +1,12 @@
+{
+"name":"@rpg-sage-creative/json-utils",
+"version":"0.0.1",
+"branch":"release/0.0.1",
+"commit":"065ec2555f39f16cc6735a834809c174cafe30e3",
+"commitSubject":"improve release.sh",
+"commitTs":1767731766000,
+"commitDate":"2026-01-06-1236",
+"buildTs":1767731817000,
+"buildDate":"2026-01-06-1236",
+"author":"Randal"
+}
