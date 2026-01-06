@@ -1,0 +1,27 @@
+{
+	"name": "@rpg-sage-creative/json-utils",
+	"version": "0.0.0",
+	"license": "LGPL-3.0-or-later",
+	"main": "build/index.js",
+	"type": "module",
+	"scripts": {
+		"prebuild": "bash ./scripts/sh/create-index-ts.sh",
+		"build": "bash ./scripts/sh/build.sh",
+		"release": "bash ./scripts/sh/release.sh",
+		"test": "bash ./scripts/sh/test.sh",
+		"test-todos": "bash ./scripts/sh/create-test-js.sh",
+		"clean": "rm -rf node_modules; rm -f package-lock.json; npm i; npm run build",
+		"refresh-tags": "git tag -l | xargs git tag -d; git fetch --tags"
+	},
+	"devDependencies": {
+		"@types/jest": "^30.0.0",
+		"@types/node": "^24.10.4",
+		"jest": "^30.2.0",
+		"typescript": "^5.9.3"
+	},
+	"dependencies": {
+	},
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com"
+	}
+}
