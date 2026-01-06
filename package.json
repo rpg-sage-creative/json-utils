@@ -22,6 +22,6 @@
 	"dependencies": {
 	},
 	"publishConfig": {
-		"registry": "https://npm.pkg.github.com"
+		"@rpg-sage-creative:registry": "https://npm.pkg.github.com"
 	}
 }
