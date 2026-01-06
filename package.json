@@ -1,9 +1,17 @@
 {
 	"name": "@rpg-sage-creative/json-utils",
 	"version": "0.0.0",
+	"description": "JSON object manipulation tools. BigInt compatible parse/stringify.",
 	"license": "LGPL-3.0-or-later",
 	"main": "build/index.js",
 	"type": "module",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/rpg-sage-creative/json-utils.git"
+	},
+	"publishConfig": {
+		"@rpg-sage-creative:registry": "https://npm.pkg.github.com"
+	},
 	"scripts": {
 		"prebuild": "bash ./scripts/sh/create-index-ts.sh",
 		"build": "bash ./scripts/sh/build.sh",
@@ -19,9 +27,5 @@
 		"jest": "^30.2.0",
 		"typescript": "^5.9.3"
 	},
-	"dependencies": {
-	},
-	"publishConfig": {
-		"@rpg-sage-creative:registry": "https://npm.pkg.github.com"
-	}
+	"dependencies": {}
 }
