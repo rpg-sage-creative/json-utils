@@ -123,6 +123,9 @@ if [ "$?" != "0" ]; then echo "Release Failed!"; exit 1; fi
 git push origin --tags
 
 git checkout main && git merge "release/$TARGET_VERSION"
+git push
+
 git checkout develop && git merge "release/$TARGET_VERSION"
+git push
 
 echo "Release $TARGET_VERSION ($TYPE) Done."
