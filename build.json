@@ -1,12 +1,12 @@
 {
 "name":"@rpg-sage-creative/json-utils",
-"version":"0.0.5",
-"branch":"release/0.0.5",
-"commit":"070349de362f3788ab39c50fc8a3c10b3533a31e",
-"commitSubject":"fix broken create-release.yml",
-"commitTs":1767762865000,
-"commitDate":"2026-01-06-2114",
-"buildTs":1767762941000,
-"buildDate":"2026-01-06-2115",
+"version":"0.0.6",
+"branch":"release/0.0.6",
+"commit":"f503d9f2e9f881097d3ba71f037b58deb1f4e99a",
+"commitSubject":"try to combine create release and publish package",
+"commitTs":1767763848000,
+"commitDate":"2026-01-06-2130",
+"buildTs":1767763930000,
+"buildDate":"2026-01-06-2132",
 "author":"Randal"
 }
