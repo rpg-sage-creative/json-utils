@@ -21,7 +21,3 @@ jobs:
               --repo="$GITHUB_REPOSITORY" \
               --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
               --generate-notes
-
-  call-workflow:
-    needs: release
-    uses: rpg-sage-creative/json-utils/.github/workflows/release-package.yml@main
