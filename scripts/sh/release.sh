@@ -101,12 +101,8 @@ git checkout -b "release/$TARGET_VERSION"
 node "$INDEX_MJS" version "$TYPE"
 if [ "$?" != "0" ]; then echo "Release Failed!"; exit 1; fi
 
-# step 3 - update build hash and create a new build.json
-bash "$SCRIPT_DIR/sh/build-info.sh"
-if [ "$?" != "0" ]; then echo "Release Failed!"; exit 1; fi
-
-# step 4 - commit package.json and build.json changes and push
-git add build.json package.json
+# step 3 - commit package.json changes and push
+git add package.json
 if [ "$?" != "0" ]; then echo "Release Failed!"; exit 1; fi
 
 git commit -am "build(versioning): Release - $TARGET_VERSION"
@@ -115,17 +111,26 @@ if [ "$?" != "0" ]; then echo "Release Failed!"; exit 1; fi
 git push origin "release/$TARGET_VERSION"
 if [ "$?" != "0" ]; then echo "Release Failed!"; exit 1; fi
 
-# step 5 - create release tag
+# step 4 - create release tag and push
 PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')
 git tag -a "v$PACKAGE_VERSION" -m "Release $PACKAGE_VERSION"
 if [ "$?" != "0" ]; then echo "Release Failed!"; exit 1; fi
 
 git push origin --tags
+if [ "$?" != "0" ]; then echo "Failed to push Tag!"; exit 1; fi
 
+# step 5 - merge release back into main
 git checkout main && git merge "release/$TARGET_VERSION"
-git push
+if [ "$?" != "0" ]; then echo "Failed merge to main!"; exit 1; fi
 
-git checkout develop && git merge "release/$TARGET_VERSION"
 git push
+if [ "$?" != "0" ]; then echo "Failed merge to main!"; exit 1; fi
+
+# step 6 - merge release back into develop
+git checkout develop && git merge "release/$TARGET_VERSION"
+if [ "$?" != "0" ]; then echo "Failed merge to develop!"; exit 1; fi
+
+git push
+if [ "$?" != "0" ]; then echo "Failed merge to develop!"; exit 1; fi
 
 echo "Release $TARGET_VERSION ($TYPE) Done."
