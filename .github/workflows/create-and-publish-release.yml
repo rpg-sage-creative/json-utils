@@ -1,8 +1,9 @@
-name: release package
+name: create and publish release
 
 on:
-  release:
-    types: [created]
+  push:
+    tags:
+      - v*
 
 jobs:
   build:
@@ -15,8 +16,25 @@ jobs:
       - run: npm ci
       - run: npm test
 
-  publish-gpr:
+  release:
     needs: build
+    name: Release pushed tags
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Create release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.ref_name }}
+        run: |
+          gh release create "$tag" \
+              --repo="$GITHUB_REPOSITORY" \
+              --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
+              --generate-notes
+
+  publish-gpr:
+    needs: release
     runs-on: ubuntu-latest
     permissions:
       packages: write
