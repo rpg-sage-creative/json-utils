@@ -23,7 +23,5 @@ jobs:
               --generate-notes
 
   call-workflow:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Call release package
-      - uses: rpg-sage-creative/$GITHUB_REPOSITORY/.github/workflows/release-package.yml@main
+    needs: release
+    uses: rpg-sage-creative/$GITHUB_REPOSITORY/.github/workflows/release-package.yml@main
