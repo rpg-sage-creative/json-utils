@@ -1,17 +1,16 @@
-name: create json-utils release
+name: create release
 
 on:
   push:
     tags:
       - v*
 
-permissions:
-  contents: write
-
 jobs:
   release:
     name: Release pushed tags
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Create release
         env:
@@ -22,3 +21,9 @@ jobs:
               --repo="$GITHUB_REPOSITORY" \
               --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
               --generate-notes
+
+  call-workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call release package
+      - uses: rpg-sage-creative/$GITHUB_REPOSITORY/.github/workflows/release-package.yml@main

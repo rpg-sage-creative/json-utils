@@ -1,4 +1,4 @@
-name: release json-utils package
+name: release package
 
 on:
   release:
