@@ -1,12 +1,12 @@
 {
-"name":"@rpg-sage-creative/json-utils",
-"version":"0.0.6",
-"branch":"release/0.0.6",
-"commit":"f503d9f2e9f881097d3ba71f037b58deb1f4e99a",
-"commitSubject":"try to combine create release and publish package",
-"commitTs":1767763848000,
-"commitDate":"2026-01-06-2130",
-"buildTs":1767763930000,
-"buildDate":"2026-01-06-2132",
+"name":"json-utils",
+"version":"0.0.7",
+"branch":"release/0.0.7",
+"commit":"9733fe223ff8665b63c7b3a100db21aee3ab4a6b",
+"commitSubject":"testing package name change",
+"commitTs":1767770452000,
+"commitDate":"2026-01-06-2320",
+"buildTs":1767770474000,
+"buildDate":"2026-01-06-2321",
 "author":"Randal"
 }
