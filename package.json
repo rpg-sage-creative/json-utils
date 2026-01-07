@@ -1,5 +1,5 @@
 {
-	"name": "json-utils",
+	"name": "@rpg-sage-creative/json-utils",
 	"version": "0.0.7",
 	"description": "JSON object manipulation tools. BigInt compatible parse/stringify.",
 	"license": "LGPL-3.0-or-later",
