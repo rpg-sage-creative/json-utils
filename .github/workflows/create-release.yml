@@ -24,4 +24,4 @@ jobs:
 
   call-workflow:
     needs: release
-    uses: rpg-sage-creative/$GITHUB_REPOSITORY/.github/workflows/release-package.yml@main
+    uses: rpg-sage-creative/json-utils/.github/workflows/release-package.yml@main
