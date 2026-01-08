@@ -13,11 +13,10 @@
 		"@rpg-sage-creative:registry": "https://npm.pkg.github.com"
 	},
 	"scripts": {
-		"prebuild": "bash ./scripts/sh/create-index-ts.sh",
-		"build": "bash ./scripts/sh/build.sh",
-		"release": "bash ./scripts/sh/release.sh",
-		"test": "bash ./scripts/sh/test.sh",
-		"test-todos": "bash ./scripts/sh/create-test-js.sh",
+		"build": "bash ./node_modules/@rpg-sage-creative/dev-scripts/sh/build.sh",
+		"release": "bash ./node_modules/@rpg-sage-creative/dev-scripts/sh/release.sh",
+		"test": "bash ./node_modules/@rpg-sage-creative/dev-scripts/sh/test.sh",
+		"test-todos": "bash ./node_modules/@rpg-sage-creative/dev-scripts/sh/create-test-js.sh",
 		"clean": "rm -rf node_modules; rm -f package-lock.json; npm i; npm run build",
 		"refresh-tags": "git tag -l | xargs git tag -d; git fetch --tags"
 	},
@@ -25,7 +24,8 @@
 		"@types/jest": "^30.0.0",
 		"@types/node": "^24.10.4",
 		"jest": "^30.2.0",
-		"typescript": "^5.9.3"
+		"typescript": "^5.9.3",
+		"@rpg-sage-creative/dev-scripts": "^0.0.4"
 	},
 	"dependencies": {}
 }
