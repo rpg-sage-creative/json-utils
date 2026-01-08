@@ -25,7 +25,7 @@
 		"@types/node": "^24.10.4",
 		"jest": "^30.2.0",
 		"typescript": "^5.9.3",
-		"@rpg-sage-creative/dev-scripts": "^0.0.4"
+		"@rpg-sage-creative/dev-scripts": "^1.0.0"
 	},
 	"dependencies": {}
 }
