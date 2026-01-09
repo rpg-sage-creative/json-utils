@@ -6,6 +6,7 @@ on:
       - v*
 
 jobs:
+
   build:
     name: Build Release
     runs-on: ubuntu-latest

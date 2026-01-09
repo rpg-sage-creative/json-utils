@@ -1,6 +1,5 @@
-import { cleanJson, stringifyJson } from "../../build/index.js";
-
-const toString = value => stringifyJson(value);
+import { tagLiterals } from "@rpg-sage-creative/template-literal-utils";
+import { cleanJson } from "../../build/index.js";
 
 describe("json", () => {
 	describe("cleanJson", () => {
@@ -61,7 +60,7 @@ describe("json", () => {
 		];
 
 		tests.forEach(([input, options, output, comparer]) => {
-			test(`cleanJson(${toString(input)}, ${toString(options)}) strictly equals ${toString(output)}`, () => {
+			test(tagLiterals`cleanJson(${input}, ${options}) strictly equals ${output}`, () => {
 				expect(cleanJson(input, options)).toStrictEqual(output);
 			});
 		});

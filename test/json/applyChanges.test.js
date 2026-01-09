@@ -1,6 +1,5 @@
-import { applyChanges, stringifyJson } from "../../build/index.js";
-
-const toString = value => stringifyJson(value);
+import { tagLiterals } from "@rpg-sage-creative/template-literal-utils";
+import { applyChanges } from "../../build/index.js";
 
 describe("json", () => {
 	describe("applyChanges", () => {
@@ -25,7 +24,7 @@ describe("json", () => {
 		];
 
 		tests.forEach(([input, changes, output, changed]) => {
-			test(`applyChanges(${toString(input)}, ${toString(changes)}) equals ${toString(output)}`, () => {
+			test(tagLiterals`applyChanges(${input}, ${changes}) equals ${output}`, () => {
 				const applied = applyChanges(input, changes);
 				expect(applied).toBe(changed);
 				expect(input).toEqual(output);

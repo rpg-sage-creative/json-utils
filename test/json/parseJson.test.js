@@ -1,4 +1,5 @@
-import { parseJson, tagLiterals } from "../../build/index.js";
+import { tagLiterals } from "@rpg-sage-creative/template-literal-utils";
+import { parseJson } from "../../build/index.js";
 import { getTests } from "./data.js";
 
 describe("json", () => {
