@@ -1,4 +1,4 @@
-import { isPrimitive } from "../types/typeGuards/isPrimitive.js";
+import { isPrimitive } from "@rsc-utils/type-utils";
 import { stringifyJson } from "./stringifyJson.js";
 
 type Options = {

@@ -1,4 +1,4 @@
-import { isPrimitive } from "../types/typeGuards/isPrimitive.js";
+import { isPrimitive } from "@rsc-utils/type-utils";
 function canDeleteValueKey(value, rules) {
     const testKey = (key) => rules === true || rules[key] === true;
     if (value === undefined) {

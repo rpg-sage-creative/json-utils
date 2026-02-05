@@ -1,4 +1,4 @@
-import { isPrimitive } from "../types/typeGuards/isPrimitive.js";
+import { isPrimitive } from "@rsc-utils/type-utils";
 
 //#region types
 
