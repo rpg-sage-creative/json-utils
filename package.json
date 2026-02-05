@@ -23,8 +23,8 @@
 		"@types/node": "^24.10.4",
 		"jest": "^30.2.0",
 		"typescript": "^5.9.3",
-		"@rsc-utils/dev-scripts": "github:rpg-sage-creative/dev-scripts#semver:^1.0.0",
-		"@rsc-utils/template-literal-utils": "github:rpg-sage-creative/template-literal-utils#semver:^1.0.0"
+		"@rsc-utils/dev-scripts": "github:rpg-sage-creative/dev-scripts#semver:^1.1.1",
+		"@rsc-utils/template-literal-utils": "github:rpg-sage-creative/template-literal-utils#semver:^1.1.1"
 	},
 	"dependencies": {
 		"@rsc-utils/type-utils": "github:rpg-sage-creative/type-utils#semver:^1.0.0"
