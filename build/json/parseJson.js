@@ -13,4 +13,3 @@ export function parseJson(text, reviver) {
         return value;
     });
 }
-export const parse = parseJson;

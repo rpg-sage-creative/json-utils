@@ -1,7 +1,16 @@
 import { isDate } from "node:util/types";
 export const WhitespaceRegExpG = /\s+/g;
-const CurlyBracesRegExp = /\{[^{[]*?\}/g;
-const SquareBracketsRegExp = /\[((,\s*)?)("[^"]*"|[\w",\s-.])*?\]/g;
+function cleanWhitespaceIfShort(value, maxLineLength) {
+    return value.length > maxLineLength ? value : value.replaceAll(WhitespaceRegExpG, " ").trim();
+}
+const CurlyBracesRegExpG = /\{[^{[]*?\}/g;
+function inlineCurlyBraces(value, maxLineLength) {
+    return value.replace(CurlyBracesRegExpG, match => cleanWhitespaceIfShort(match, maxLineLength));
+}
+const SquareBracketsRegExpG = /\[((,\s*)?)("[^"]*"|[\w",\s-.])*?\]/g;
+function inlineSquareBrackets(value, maxLineLength) {
+    return value.replace(SquareBracketsRegExpG, match => cleanWhitespaceIfShort(match, maxLineLength));
+}
 export function stringifyJson(value, replacer, space, maxLineLength = 0) {
     if (maxLineLength > 0 && !space)
         space = "\t";
@@ -22,11 +31,7 @@ export function stringifyJson(value, replacer, space, maxLineLength = 0) {
         return value;
     }, space);
     if (maxLineLength > 0) {
-        const cleanWhitespaceIfShort = (value, maxLineLength) => value.length > maxLineLength ? value : value.replaceAll(WhitespaceRegExpG, " ").trim();
-        const inlineCurlyBraces = (value, maxLineLength) => value.replace(CurlyBracesRegExp, match => cleanWhitespaceIfShort(match, maxLineLength));
-        const inlineSquareBrackets = (value, maxLineLength) => value.replace(SquareBracketsRegExp, match => cleanWhitespaceIfShort(match, maxLineLength));
         return inlineCurlyBraces(inlineSquareBrackets(stringified, maxLineLength), maxLineLength);
     }
     return stringified;
 }
-export const stringify = stringifyJson;
