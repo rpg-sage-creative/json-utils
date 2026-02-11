@@ -1,5 +1,5 @@
 import { tagLiterals } from "@rsc-utils//template-literal-utils";
-import { stringifyJson } from "../../build/index.js";
+import { stringifyJson } from "../build/index.js";
 import { getTests } from "./data.js";
 
 describe("json", () => {

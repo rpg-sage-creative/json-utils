@@ -1,5 +1,5 @@
 import { tagLiterals } from "@rsc-utils//template-literal-utils";
-import { cleanJson } from "../../build/index.js";
+import { cleanJson } from "../build/index.js";
 
 describe("json", () => {
 	describe("cleanJson", () => {

@@ -1,5 +1,5 @@
 import { tagLiterals } from "@rsc-utils//template-literal-utils";
-import { applyChanges } from "../../build/index.js";
+import { applyChanges } from "../build/index.js";
 
 describe("json", () => {
 	describe("applyChanges", () => {

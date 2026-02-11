@@ -1,5 +1,5 @@
 import { isPrimitive } from "@rsc-utils/type-utils";
-import { cleanJson, cloneJson } from "../../build/index.js";
+import { cleanJson, cloneJson } from "../build/index.js";
 import { getTests } from "./data.js";
 
 describe("json", () => {
