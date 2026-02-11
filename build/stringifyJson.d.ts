@@ -1,4 +1,3 @@
-export declare const WhitespaceRegExpG: RegExp;
 /**
  * BigInt and Date friendly replacement for JSON.stringify().
  */
