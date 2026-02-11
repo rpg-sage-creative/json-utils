@@ -17,6 +17,6 @@ One of the actions performed by the build script is to create an `index.ts` file
 
 The build scripts included in this repo perform a dual pass build. One builds everything with an entire tsdoc. The second redoes the tsdoc files to remove any documentation with `@internal` in the description.
 
-# v1.1.0
+# v1.2.0
 
-As of v1.1.0 this repo assumes you are using pnpm (instead of npm) and that you are making use of the updated `v1.3.0` version of `dev-scripts`.
+As of v1.2.0 this repo assumes you are using pnpm (instead of npm) and that you are making use of the updated `v1.3.0` version of `dev-scripts`.
