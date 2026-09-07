@@ -12,17 +12,22 @@ function inlineSquareBrackets(value, maxLineLength) {
     return value.replace(SquareBracketsRegExpG, match => cleanWhitespaceIfShort(match, maxLineLength));
 }
 export function stringifyJson(value, replacer, space, maxLineLength = 0) {
+    // if we have a maxLineLength, we need to make sure we have "space" character(s)
     if (maxLineLength > 0 && !space)
         space = "\t";
     const stringified = JSON.stringify(value, function (key, value) {
+        // we are handling bigint and date values
         const cleanValue = this[key];
         if (isDate(cleanValue))
             return { $date: cleanValue.toISOString() };
         if (typeof (cleanValue) === "bigint")
             return { $bigint: cleanValue.toString() };
+        // if they passed in a replacer, then let's use it
         if (replacer) {
+            // call a function
             if (typeof (replacer) === "function") {
                 return replacer.call(this, key, value);
+                // check an array to ensure the key was given
             }
             else if (Array.isArray(replacer) && !replacer.some(_key => String(_key) === key)) {
                 return undefined;
@@ -30,6 +35,7 @@ export function stringifyJson(value, replacer, space, maxLineLength = 0) {
         }
         return value;
     }, space);
+    // if we have a maxLineLength, process the json
     if (maxLineLength > 0) {
         return inlineCurlyBraces(inlineSquareBrackets(stringified, maxLineLength), maxLineLength);
     }
