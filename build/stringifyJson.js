@@ -1,7 +1,9 @@
-import { cleanWhitespace } from "@rsc-utils/whitespace-utils";
 import { isDate } from "node:util/types";
+const WhitespaceRegExpG = /\s+/g;
 function cleanWhitespaceIfShort(value, maxLineLength) {
-    return value.length > maxLineLength ? value : cleanWhitespace(value);
+    return value.length > maxLineLength
+        ? value
+        : value.replace(WhitespaceRegExpG, " ").trim();
 }
 const CurlyBracesRegExpG = /\{[^{[]*?\}/g;
 function inlineCurlyBraces(value, maxLineLength) {
